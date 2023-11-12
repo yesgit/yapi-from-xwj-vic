@@ -64,7 +64,7 @@ export function fetchNewsData(typeid, type, page, limit, selectValue) {
 
   return {
     type: FETCH_NEWS_DATA,
-    payload: axios.get('/api/log/list', {
+    payload: axios.get('/yapi/api/log/list', {
       params: param
     })
   };
@@ -79,7 +79,7 @@ export function fetchMoreNews(typeid, type, page, limit, selectValue) {
   }
   return {
     type: FETCH_MORE_NEWS,
-    payload: axios.get('/api/log/list', {
+    payload: axios.get('/yapi/api/log/list', {
       params: param
     })
   };
@@ -89,13 +89,13 @@ export function getMockUrl(project_id) {
   const params = { id: project_id };
   return {
     type: '',
-    payload: axios.get('/api/project/get', { params: params })
+    payload: axios.get('/yapi/api/project/get', { params: params })
   };
 }
 
 export function fetchUpdateLogData(params) {
   return {
     type: '',
-    payload: axios.post('/api/log/list_by_update', params)
+    payload: axios.post('/yapi/api/log/list_by_update', params)
   };
 }

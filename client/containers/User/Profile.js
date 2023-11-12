@@ -109,7 +109,7 @@ class Profile extends Component {
     var _this = this;
     const { curUid } = this.props;
 
-    axios.get('/api/user/find?id=' + id).then(res => {
+    axios.get('/yapi/api/user/find?id=' + id).then(res => {
       _this.setState({
         userinfo: res.data.data,
         _userinfo: res.data.data
@@ -128,7 +128,7 @@ class Profile extends Component {
     let params = { uid: state.userinfo.uid };
     params[name] = value;
 
-    axios.post('/api/user/update', params).then(
+    axios.post('/yapi/api/user/update', params).then(
       res => {
         let data = res.data;
         if (data.errcode === 0) {
@@ -185,7 +185,7 @@ class Profile extends Component {
       old_password: old_password
     };
 
-    axios.post('/api/user/change_password', params).then(
+    axios.post('/yapi/api/user/change_password', params).then(
       res => {
         let data = res.data;
         if (data.errcode === 0) {
@@ -396,7 +396,7 @@ class Profile extends Component {
                 <AvatarUpload uid={userinfo.uid}>点击上传头像</AvatarUpload>
               ) : (
                 <div className="avatarImg">
-                  <img src={`/api/user/avatar?uid=${userinfo.uid}`} />
+                  <img src={`/yapi/api/user/avatar?uid=${userinfo.uid}`} />
                 </div>
               )}
             </Col>
@@ -483,7 +483,7 @@ class AvatarUpload extends Component {
   };
   uploadAvatar(basecode) {
     axios
-      .post('/api/user/upload_avatar', { basecode: basecode })
+      .post('/yapi/api/user/upload_avatar', { basecode: basecode })
       .then(() => {
         // this.setState({ imageUrl: basecode });
         this.props.setImageUrl(basecode);
@@ -502,7 +502,7 @@ class AvatarUpload extends Component {
   }
   render() {
     const { url } = this.props;
-    let imageUrl = url ? url : `/api/user/avatar?uid=${this.props.uid}`;
+    let imageUrl = url ? url : `/yapi/api/user/avatar?uid=${this.props.uid}`;
     // let imageUrl = this.state.imageUrl ? this.state.imageUrl : `/api/user/avatar?uid=${this.props.uid}`;
     // console.log(this.props.uid);
     return (
@@ -516,7 +516,7 @@ class AvatarUpload extends Component {
               className="avatar-uploader"
               name="basecode"
               showUploadList={false}
-              action="/api/user/upload_avatar"
+              action="/yapi/api/user/upload_avatar"
               beforeUpload={beforeUpload}
               onChange={this.handleChange.bind(this)}
             >

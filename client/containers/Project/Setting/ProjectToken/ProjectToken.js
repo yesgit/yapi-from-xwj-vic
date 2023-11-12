@@ -79,16 +79,16 @@ class ProjectToken extends Component {
         <p><a target="_blank" rel="noopener noreferrer"   href="https://hellosean1025.github.io/yapi/openapi.html">详细接口文档</a></p>
         <div>
           <ul className="open-api">
-            <li>/api/open/run_auto_test [运行自动化测试]</li>
-            <li>/api/open/import_data [导入数据]</li>
-            <li>/api/interface/add [新增接口]</li>
-            <li>/api/interface/save [保存接口]</li>
-            <li>/api/interface/up [更新接口]</li>
-            <li>/api/interface/get [获取接口]</li>
-            <li>/api/interface/list [获取接口列表]</li>
-            <li>/api/interface/list_menu [获取接口菜单]</li>
-            <li>/api/interface/add_cat [新增接口分类]</li>
-            <li>/api/interface/getCatMenu [获取所有分类]</li>
+            <li>/yapi/api/open/run_auto_test [运行自动化测试]</li>
+            <li>/yapi/api/open/import_data [导入数据]</li>
+            <li>/yapi/api/interface/add [新增接口]</li>
+            <li>/yapi/api/interface/save [保存接口]</li>
+            <li>/yapi/api/interface/up [更新接口]</li>
+            <li>/yapi/api/interface/get [获取接口]</li>
+            <li>/yapi/api/interface/list [获取接口列表]</li>
+            <li>/yapi/api/interface/list_menu [获取接口菜单]</li>
+            <li>/yapi/api/interface/add_cat [新增接口分类]</li>
+            <li>/yapi/api/interface/getCatMenu [获取所有分类]</li>
           </ul>
         </div>
       </div>

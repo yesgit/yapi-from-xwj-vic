@@ -178,7 +178,7 @@ class groupController extends baseController {
     ]);
     let username = this.getUsername();
     yapi.commons.saveLog({
-      content: `<a href="/user/profile/${this.getUid()}">${username}</a> 新增了分组 <a href="/group/${
+      content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 新增了分组 <a href="/yapi/group/${
         result._id
       }">${params.group_name}</a>`,
       type: 'group',
@@ -269,11 +269,11 @@ class groupController extends baseController {
     let username = this.getUsername();
     if (add_members.length) {
       let members = add_members.map(item => {
-        return `<a href = "/user/profile/${item.uid}">${item.username}</a>`;
+        return `<a href = "/yapi/user/profile/${item.uid}">${item.username}</a>`;
       });
       members = members.join('、');
       yapi.commons.saveLog({
-        content: `<a href="/user/profile/${this.getUid()}">${username}</a> 新增了分组成员 ${members} 为 ${
+        content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 新增了分组成员 ${members} 为 ${
           rolename[params.role]
         }`,
         type: 'group',
@@ -321,7 +321,7 @@ class groupController extends baseController {
 
     let groupUserdata = await this.getUserdata(params.member_uid, params.role);
     yapi.commons.saveLog({
-      content: `<a href="/user/profile/${this.getUid()}">${username}</a> 更改了分组成员 <a href="/user/profile/${
+      content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 更改了分组成员 <a href="/yapi/user/profile/${
         params.member_uid
       }">${groupUserdata ? groupUserdata.username : ''}</a> 的权限为 "${rolename[params.role]}"`,
       type: 'group',
@@ -378,7 +378,7 @@ class groupController extends baseController {
 
     let groupUserdata = await this.getUserdata(params.member_uid, params.role);
     yapi.commons.saveLog({
-      content: `<a href="/user/profile/${this.getUid()}">${username}</a> 删除了分组成员 <a href="/user/profile/${
+      content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 删除了分组成员 <a href="/yapi/user/profile/${
         params.member_uid
       }">${groupUserdata ? groupUserdata.username : ''}</a>`,
       type: 'group',
@@ -519,7 +519,7 @@ class groupController extends baseController {
     let result = await groupInst.up(params.id, params);
     let username = this.getUsername();
     yapi.commons.saveLog({
-      content: `<a href="/user/profile/${this.getUid()}">${username}</a> 更新了 <a href="/group/${
+      content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 更新了 <a href="/yapi/group/${
         params.id
       }">${params.group_name}</a> 分组`,
       type: 'group',

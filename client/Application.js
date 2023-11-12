@@ -35,31 +35,31 @@ const alertContent = () => {
 
 let AppRoute = {
   home: {
-    path: '/',
+    path: '/yapi',
     component: Home
   },
   group: {
-    path: '/group',
+    path: '/yapi/group',
     component: Group
   },
   project: {
-    path: '/project/:id',
+    path: '/yapi/project/:id',
     component: Project
   },
   user: {
-    path: '/user',
+    path: '/yapi/user',
     component: User
   },
   follow: {
-    path: '/follow',
+    path: '/yapi/follow',
     component: Follows
   },
   addProject: {
-    path: '/add-project',
+    path: '/yapi/add-project',
     component: AddProject
   },
   login: {
-    path: '/login',
+    path: '/yapi/login',
     component: Login
   }
 };

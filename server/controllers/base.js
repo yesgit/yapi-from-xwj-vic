@@ -23,13 +23,13 @@ class baseController {
     this.tokenModel = yapi.getInst(tokenModel);
     this.projectModel = yapi.getInst(projectModel);
     let ignoreRouter = [
-      '/api/user/login_by_token',
-      '/api/user/login',
-      '/api/user/reg',
-      '/api/user/status',
-      '/api/user/logout',
-      '/api/user/avatar',
-      '/api/user/login_by_ldap'
+      '/yapi/api/user/login_by_token',
+      '/yapi/api/user/login',
+      '/yapi/api/user/reg',
+      '/yapi/api/user/status',
+      '/yapi/api/user/logout',
+      '/yapi/api/user/avatar',
+      '/yapi/api/user/login_by_ldap'
     ];
     if (ignoreRouter.indexOf(ctx.path) > -1) {
       this.$auth = true;
@@ -38,28 +38,28 @@ class baseController {
     }
 
     let openApiRouter = [
-      '/api/open/run_auto_test',
-      '/api/open/import_data',
-			'/api/interface/add',
-			'/api/interface/save',
-			'/api/interface/up',
-			'/api/interface/get',
-			'/api/interface/list',
-			'/api/interface/list_menu',
-			'/api/interface/add_cat',
-      '/api/interface/getCatMenu',
-      '/api/interface/list_cat',
-      '/api/project/get',
-      '/api/plugin/export',
-      '/api/project/up',
-      '/api/plugin/exportSwagger'
+      '/yapi/api/open/run_auto_test',
+      '/yapi/api/open/import_data',
+			'/yapi/api/interface/add',
+			'/yapi/api/interface/save',
+			'/yapi/api/interface/up',
+			'/yapi/api/interface/get',
+			'/yapi/api/interface/list',
+			'/yapi/api/interface/list_menu',
+			'/yapi/api/interface/add_cat',
+      '/yapi/api/interface/getCatMenu',
+      '/yapi/api/interface/list_cat',
+      '/yapi/api/project/get',
+      '/yapi/api/plugin/export',
+      '/yapi/api/project/up',
+      '/yapi/plugin/exportSwagger'
     ];
 
     let params = Object.assign({}, ctx.query, ctx.request.body);
     let token = params.token;
 
     // 如果前缀是 /api/open，执行 parse token 逻辑
-    if (token && typeof token === 'string' && (openApiRouter.indexOf(ctx.path) > -1 || ctx.path.indexOf('/api/open/') === 0 )) {
+    if (token && typeof token === 'string' && (openApiRouter.indexOf(ctx.path) > -1 || ctx.path.indexOf('/yapi/api/open/') === 0 )) {
 
       let tokens = parseToken(token)
 

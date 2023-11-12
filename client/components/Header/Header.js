@@ -16,13 +16,13 @@ const plugin = require('client/plugin.js');
 
 let HeaderMenu = {
   user: {
-    path: '/user/profile',
+    path: '/yapi/user/profile',
     name: '个人中心',
     icon: 'user',
     adminFlag: false
   },
   solution: {
-    path: '/user/list',
+    path: '/yapi/user/list',
     name: '用户管理',
     icon: 'solution',
     adminFlag: true
@@ -104,7 +104,7 @@ MenuUser.propTypes = {
 };
 
 const ToolUser = props => {
-  let imageUrl = props.imageUrl ? props.imageUrl : `/api/user/avatar?uid=${props.uid}`;
+  let imageUrl = props.imageUrl ? props.imageUrl : `/yapi/api/user/avatar?uid=${props.uid}`;
   return (
     <ul>
       <li className="toolbar-li item-search">
@@ -120,7 +120,7 @@ const ToolUser = props => {
       >
         <Tooltip placement="bottom" title={'我的关注'}>
           <li className="toolbar-li">
-            <Link to="/follow">
+            <Link to="/yapi/follow">
               <Icon className="dropdown-link" style={{ fontSize: 16 }} type="star" />
             </Link>
           </li>
@@ -136,7 +136,7 @@ const ToolUser = props => {
       >
         <Tooltip placement="bottom" title={'新建项目'}>
           <li className="toolbar-li">
-            <Link to="/add-project">
+            <Link to="/yapi/add-project">
               <Icon className="dropdown-link" style={{ fontSize: 16 }} type="plus-circle" />
             </Link>
           </li>
@@ -261,8 +261,8 @@ export default class HeaderCom extends Component {
       .logoutActions()
       .then(res => {
         if (res.payload.data.errcode == 0) {
-          this.props.history.push('/');
-          this.props.changeMenuItem('/');
+          this.props.history.push('/yapi');
+          this.props.changeMenuItem('/yapi');
           message.success('退出成功! ');
         } else {
           message.error(res.payload.data.errmsg);
@@ -284,7 +284,7 @@ export default class HeaderCom extends Component {
     this.props.checkLoginState
       .then(res => {
         if (res.payload.data.errcode !== 0) {
-          this.props.history.push('/');
+          this.props.history.push('/yapi');
         }
       })
       .catch(err => {
@@ -297,7 +297,7 @@ export default class HeaderCom extends Component {
     return (
       <Header className="header-box m-header">
         <div className="content g-row">
-          <Link onClick={this.relieveLink} to="/group" className="logo">
+          <Link onClick={this.relieveLink} to="/yapi/group" className="logo">
             <div className="href">
               <span className="img">
                 <LogoSVG length="32px" />

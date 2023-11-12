@@ -71,7 +71,7 @@ export default class Run extends Component {
       params.test_res_body = JSON.stringify(params.test_res_body, null, '   ');
     }
 
-    const res = await axios.post('/api/col/add_case', params);
+    const res = await axios.post('/yapi/api/col/add_case', params);
     if (res.data.errcode) {
       message.error(res.data.errmsg);
     } else {

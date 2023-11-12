@@ -39,10 +39,10 @@ class Activity extends Component {
                   '//' +
                   location.hostname +
                   (location.port !== '' ? ':' + location.port : '') +
-                  `/mock/${currProject._id}${currProject.basepath}/yourPath`}
+                  `/yapi/mock/${currProject._id}${currProject.basepath}/yourPath`}
               </p>
               <Button type="primary">
-                <a href={`/api/project/download?project_id=${this.props.match.params.id}`}>
+                <a href={`/yapi/api/project/download?project_id=${this.props.match.params.id}`}>
                   下载Mock数据
                 </a>
               </Button>

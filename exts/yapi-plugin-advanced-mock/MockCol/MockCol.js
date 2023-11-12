@@ -51,7 +51,7 @@ export default class MockCol extends Component {
   openModal = (record, isAdd) => {
     return async () => {
       if (this.props.currInterface.res_body_is_json_schema && isAdd) {
-        let result = await axios.post('/api/interface/schema2json', {
+        let result = await axios.post('/yapi/api/interface/schema2json', {
           schema: json5_parse(this.props.currInterface.res_body),
           required: true
         });
@@ -59,7 +59,7 @@ export default class MockCol extends Component {
       }
       // 参数过滤schema形式
       if (this.props.currInterface.req_body_is_json_schema) {
-        let result = await axios.post('/api/interface/schema2json', {
+        let result = await axios.post('/yapi/api/interface/schema2json', {
           schema: json5_parse(this.props.currInterface.req_body_other),
           required: true
         });
@@ -89,7 +89,7 @@ export default class MockCol extends Component {
     if (!this.state.isAdd) {
       caseData.id = currcase._id;
     }
-    await axios.post('/api/plugin/advmock/case/save', caseData).then(async res => {
+    await axios.post('/yapi/api/plugin/advmock/case/save', caseData).then(async res => {
       if (res.data.errcode === 0) {
         message.success(this.state.isAdd ? '添加成功' : '保存成功');
         await this.props.fetchMockCol(interface_id);
@@ -102,7 +102,7 @@ export default class MockCol extends Component {
 
   deleteCase = async id => {
     const interface_id = this.props.match.params.actionId;
-    await axios.post('/api/plugin/advmock/case/del', { id }).then(async res => {
+    await axios.post('/yapi/api/plugin/advmock/case/del', { id }).then(async res => {
       if (res.data.errcode === 0) {
         message.success('删除成功');
         await this.props.fetchMockCol(interface_id);
@@ -116,7 +116,7 @@ export default class MockCol extends Component {
   openMockCase = async (id , enable=true)=> {
     const interface_id = this.props.match.params.actionId;
 
-    await axios.post('/api/plugin/advmock/case/hide', {
+    await axios.post('/yapi/api/plugin/advmock/case/hide', {
       id,
       enable: !enable
     }).then(async res => {

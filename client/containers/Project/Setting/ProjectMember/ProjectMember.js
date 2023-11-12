@@ -244,7 +244,7 @@ class ProjectMember extends Component {
         render: (text, record) => {
           return (
             <div className="m-user">
-              <img src={'/api/user/avatar?uid=' + record.uid} className="m-user-img" />
+              <img src={'/yapi/api/user/avatar?uid=' + record.uid} className="m-user-img" />
               <p className="m-user-name">{text}</p>
               <Tooltip placement="top" title="消息通知">
                 <span>
@@ -406,7 +406,7 @@ class ProjectMember extends Component {
                         location.protocol +
                         '//' +
                         location.host +
-                        '/api/user/avatar?uid=' +
+                        '/yapi/api/user/avatar?uid=' +
                         item.uid
                       }
                       className="item-img"

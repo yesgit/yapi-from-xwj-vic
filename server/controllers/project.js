@@ -251,7 +251,7 @@ class projectController extends baseController {
     }
     let username = this.getUsername();
     yapi.commons.saveLog({
-      content: `<a href="/user/profile/${this.getUid()}">${username}</a> 添加了项目 <a href="/project/${
+      content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 添加了项目 <a href="/project/${
         result._id
       }">${params.name}</a>`,
       type: 'project',
@@ -367,9 +367,9 @@ class projectController extends baseController {
 
       let username = this.getUsername();
       yapi.commons.saveLog({
-        content: `<a href="/user/profile/${this.getUid()}">${username}</a> 复制了项目 ${
+        content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 复制了项目 ${
           params.preName
-        } 为 <a href="/project/${result._id}">${params.name}</a>`,
+        } 为 <a href="/yapi/project/${result._id}">${params.name}</a>`,
         type: 'project',
         uid,
         username: username,
@@ -418,12 +418,12 @@ class projectController extends baseController {
     let result = await this.Model.addMember(params.id, add_members);
     if (add_members.length) {
       let members = add_members.map(item => {
-        return `<a href = "/user/profile/${item.uid}">${item.username}</a>`;
+        return `<a href = "/yapi/user/profile/${item.uid}">${item.username}</a>`;
       });
       members = members.join('、');
       let username = this.getUsername();
       yapi.commons.saveLog({
-        content: `<a href="/user/profile/${this.getUid()}">${username}</a> 添加了项目成员 ${members}`,
+        content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 添加了项目成员 ${members}`,
         type: 'project',
         uid: this.getUid(),
         username: username,
@@ -469,7 +469,7 @@ class projectController extends baseController {
         .findById(params.member_uid)
         .then(member => {
           yapi.commons.saveLog({
-            content: `<a href="/user/profile/${this.getUid()}">${username}</a> 删除了项目中的成员 <a href="/user/profile/${
+            content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 删除了项目中的成员 <a href="/yapi/user/profile/${
               params.member_uid
             }">${member ? member.username : ''}</a>`,
             type: 'project',
@@ -671,7 +671,7 @@ class projectController extends baseController {
       .findById(params.member_uid)
       .then(member => {
         yapi.commons.saveLog({
-          content: `<a href="/user/profile/${this.getUid()}">${username}</a> 修改了项目中的成员 <a href="/user/profile/${
+          content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 修改了项目中的成员 <a href="/yapi/user/profile/${
             params.member_uid
           }">${member.username}</a> 的角色为 "${rolename[params.role]}"`,
           type: 'project',
@@ -748,7 +748,7 @@ class projectController extends baseController {
       this.followModel.updateById(this.getUid(), id, data).then(() => {
         let username = this.getUsername();
         yapi.commons.saveLog({
-          content: `<a href="/user/profile/${this.getUid()}">${username}</a> 修改了项目图标、颜色`,
+          content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 修改了项目图标、颜色`,
           type: 'project',
           uid: this.getUid(),
           username: username,
@@ -824,7 +824,7 @@ class projectController extends baseController {
       let result = await this.Model.up(id, data);
       let username = this.getUsername();
       yapi.commons.saveLog({
-        content: `<a href="/user/profile/${this.getUid()}">${username}</a> 更新了项目 <a href="/project/${id}/interface/api">${
+        content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 更新了项目 <a href="/yapi/project/${id}/interface/api">${
           projectData.name
         }</a>`,
         type: 'project',
@@ -882,7 +882,7 @@ class projectController extends baseController {
       let result = await this.Model.up(id, data);
       let username = this.getUsername();
       yapi.commons.saveLog({
-        content: `<a href="/user/profile/${this.getUid()}">${username}</a> 更新了项目 <a href="/project/${id}/interface/api">${
+        content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 更新了项目 <a href="/yapi/project/${id}/interface/api">${
           projectData.name
         }</a> 的环境`,
         type: 'project',
@@ -934,7 +934,7 @@ class projectController extends baseController {
       let result = await this.Model.up(id, data);
       let username = this.getUsername();
       yapi.commons.saveLog({
-        content: `<a href="/user/profile/${this.getUid()}">${username}</a> 更新了项目 <a href="/project/${id}/interface/api">${
+        content: `<a href="/yapi/user/profile/${this.getUid()}">${username}</a> 更新了项目 <a href="/yapi/project/${id}/interface/api">${
           projectData.name
         }</a> 的tag`,
         type: 'project',

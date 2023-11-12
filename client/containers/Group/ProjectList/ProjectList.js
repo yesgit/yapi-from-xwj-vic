@@ -172,7 +172,7 @@ class ProjectList extends Component {
           </Col>
           <Col span={8}>
             {isShow ? (
-              <Link to="/add-project">
+              <Link to="/yapi/add-project">
                 <Button type="primary">添加项目</Button>
               </Link>
             ) : (

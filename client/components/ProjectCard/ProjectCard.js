@@ -137,7 +137,7 @@ class ProjectCard extends Component {
           bordered={false}
           className="m-card"
           onClick={() =>
-            this.props.history.push('/project/' + (projectData.projectid || projectData._id))
+            this.props.history.push('/yapi/project/' + (projectData.projectid || projectData._id))
           }
         >
           <Icon

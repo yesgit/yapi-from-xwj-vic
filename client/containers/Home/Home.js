@@ -49,7 +49,7 @@ const HomeGuest = () => (
                 <span className="desc">旨在为开发、产品、测试人员提供更优雅的接口管理服务</span>
               </div>
               <div className="btn-group">
-                <Link to="/login">
+                <Link to="/yapi/login">
                   <Button type="primary" className="btn-home btn-login">
                     登录 / 注册
                   </Button>
@@ -339,7 +339,7 @@ class Home extends Component {
 
   UNSAFE_componentWillMount() {
     if (this.props.login) {
-      this.props.history.push('/group/261');
+      this.props.history.push('/yapi/group/261');
     }
   }
 
@@ -351,7 +351,7 @@ class Home extends Component {
     changeMenuItem: PropTypes.func
   };
   toStart = () => {
-    this.props.changeMenuItem('/group');
+    this.props.changeMenuItem('/yapi/group');
   };
   render() {
     return (
@@ -365,7 +365,7 @@ class Home extends Component {
             </div>
             <div className="tip-btns">
               <div className="btn-group">
-                <Link to="/login">
+                <Link to="/yapi/login">
                   <Button type="primary" className="btn-home btn-login">
                     登录 / 注册
                   </Button>

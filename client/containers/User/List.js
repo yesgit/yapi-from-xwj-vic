@@ -45,7 +45,7 @@ class List extends Component {
   };
 
   getUserList() {
-    axios.get('/api/user/list?page=' + this.state.current + '&limit=' + limit).then(res => {
+    axios.get('/yapi/api/user/list?page=' + this.state.current + '&limit=' + limit).then(res => {
       let result = res.data;
 
       if (result.errcode === 0) {
@@ -70,7 +70,7 @@ class List extends Component {
 
   confirm = uid => {
     axios
-      .post('/api/user/del', {
+      .post('/yapi/api/user/del', {
         id: uid
       })
       .then(
@@ -101,7 +101,7 @@ class List extends Component {
   handleSearch = value => {
     let params = { q: value };
     if (params.q !== '') {
-      axios.get('/api/user/search', { params }).then(data => {
+      axios.get('/yapi/api/user/search', { params }).then(data => {
         let userList = [];
 
         data = data.data.data;
@@ -140,7 +140,7 @@ class List extends Component {
         key: 'username',
         width: 180,
         render: (username, item) => {
-          return <Link to={'/user/profile/' + item._id}>{item.username}</Link>;
+          return <Link to={'/yapi/user/profile/' + item._id}>{item.username}</Link>;
         }
       },
       {

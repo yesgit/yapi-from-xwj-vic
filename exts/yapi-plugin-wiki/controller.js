@@ -98,7 +98,7 @@ class wikiController extends baseController {
         current: params.desc,
         old: result ? result.toObject().desc : ''
       };
-      let wikiUrl = `${ctx.request.origin}/project/${params.project_id}/wiki`;
+      let wikiUrl = `${ctx.request.origin}/yapi/project/${params.project_id}/wiki`;
 
       if (notice) {
         let diffView = showDiffMsg(jsondiffpatch, formattersHtml, logData);
@@ -138,7 +138,7 @@ class wikiController extends baseController {
 
       // 保存修改日志信息
       yapi.commons.saveLog({
-        content: `<a href="/user/profile/${uid}">${username}</a> 更新了 <a href="${wikiUrl}">wiki</a> 的信息`,
+        content: `<a href="/yapi/user/profile/${uid}">${username}</a> 更新了 <a href="${wikiUrl}">wiki</a> 的信息`,
         type: 'project',
         uid,
         username: username,

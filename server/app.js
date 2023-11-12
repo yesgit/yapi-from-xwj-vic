@@ -35,8 +35,8 @@ app.use(router.allowedMethods());
 websocket(app);
 
 app.use(async (ctx, next) => {
-  if (/^\/(?!api)[a-zA-Z0-9\/\-_]*$/.test(ctx.path)) {
-    ctx.path = '/';
+  if (/^\/yapi\/(?!api)[a-zA-Z0-9\/\-_]*$/.test(ctx.path)) {
+    ctx.path = '/yapi/api/';
     await next();
   } else {
     await next();
@@ -44,7 +44,7 @@ app.use(async (ctx, next) => {
 });
 
 app.use(async (ctx, next) => {
-  if (ctx.path.indexOf('/prd') === 0) {
+  if (ctx.path.indexOf('/yapi/prd') === 0) {
     ctx.set('Cache-Control', 'max-age=8640000000');
     if (yapi.commons.fileExist(yapi.path.join(yapi.WEBROOT, 'static', ctx.path + '.gz'))) {
       ctx.set('Content-Encoding', 'gzip');
@@ -53,7 +53,6 @@ app.use(async (ctx, next) => {
   }
   await next();
 });
-
 
 app.use(koaStatic(yapi.path.join(yapi.WEBROOT, 'static'), { index: indexFile, gzip: true }));
 
@@ -65,5 +64,5 @@ server.setTimeout(yapi.WEBCONFIG.timeout);
 commons.log(
   `服务已启动，请打开下面链接访问: \nhttp://127.0.0.1${
     yapi.WEBCONFIG.port == '80' ? '' : ':' + yapi.WEBCONFIG.port
-  }/`
+  }/yapi`
 );

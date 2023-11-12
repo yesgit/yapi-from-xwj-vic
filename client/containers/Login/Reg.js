@@ -45,7 +45,7 @@ class Reg extends Component {
       if (!err) {
         this.props.regActions(values).then(res => {
           if (res.payload.data.errcode == 0) {
-            this.props.history.replace('/group');
+            this.props.history.replace('/yapi/group');
             message.success('注册成功! ');
           }
         });

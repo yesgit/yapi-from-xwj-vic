@@ -92,7 +92,7 @@ class ProjectData extends Component {
   };
 
   UNSAFE_componentWillMount() {
-    axios.get(`/api/interface/getCatMenu?project_id=${this.props.match.params.id}`).then(data => {
+    axios.get(`/yapi/api/interface/getCatMenu?project_id=${this.props.match.params.id}`).then(data => {
       if (data.data.errcode === 0) {
         let menuList = data.data.data;
         this.setState({
@@ -298,7 +298,7 @@ class ProjectData extends Component {
       name: 'interfaceData',
       multiple: true,
       showUploadList: false,
-      action: '/api/interface/interUpload',
+      action: '/yapi/api/interface/interUpload',
       customRequest: this.handleFile,
       onChange: this.uploadChange
     };

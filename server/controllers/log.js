@@ -70,7 +70,7 @@ class logController extends baseController {
           item = item.toObject();
           if (item.type === 'project') {
             item.content =
-              `在 <a href="/project/${item.typeid}">${projectDatas[item.typeid].name}</a> 项目: ` +
+              `在 <a href="/yapi/project/${item.typeid}">${projectDatas[item.typeid].name}</a> 项目: ` +
               item.content;
           }
           projectLogList[index] = item;

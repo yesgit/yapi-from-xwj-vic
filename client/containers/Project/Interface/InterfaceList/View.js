@@ -428,8 +428,8 @@ class View extends Component {
               创&ensp;建&ensp;人：
             </Col>
             <Col span={8} className='colValue'>
-              <Link className='user-name' to={'/user/profile/' + uid}>
-                <img src={'/api/user/avatar?uid=' + uid} className='user-img' />
+              <Link className='user-name' to={'/yapi/user/profile/' + uid}>
+                <img src={'/yapi/api/user/avatar?uid=' + uid} className='user-img' />
                 {username}
               </Link>
             </Col>

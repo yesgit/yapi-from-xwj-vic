@@ -113,7 +113,7 @@ class userController extends baseController {
       let login = await this.handleThirdLogin(ret.email, ret.username);
       if (login === true) {
         yapi.commons.log('login success');
-        ctx.redirect('/group');
+        ctx.redirect('/yapi/group');
       }
     } catch (e) {
       yapi.commons.log(e.message, 'error');
@@ -601,7 +601,7 @@ class userController extends baseController {
       let data = await avatarInst.get(uid);
       let dataBuffer, type;
       if (!data || !data.basecode) {
-        dataBuffer = yapi.fs.readFileSync(yapi.path.join(yapi.WEBROOT, 'static/image/avatar.png'));
+        dataBuffer = yapi.fs.readFileSync(yapi.path.join(yapi.WEBROOT, 'static/yapi/image/avatar.png'));
         type = 'image/png';
       } else {
         type = data.type;

@@ -46,23 +46,23 @@ export default class Srch extends Component {
 
   onSelect = async (value, option) => {
     if (option.props.type === '分组') {
-      this.props.changeMenuItem('/group');
-      this.props.history.push('/group/' + option.props['id']);
+      this.props.changeMenuItem('/yapi/group');
+      this.props.history.push('/yapi/group/' + option.props['id']);
       this.props.setCurrGroup({ group_name: value, _id: option.props['id'] - 0 });
     } else if (option.props.type === '项目') {
       await this.props.fetchGroupMsg(option.props['groupId']);
-      this.props.history.push('/project/' + option.props['id']);
+      this.props.history.push('/yapi/project/' + option.props['id']);
     } else if (option.props.type === '接口') {
       await this.props.fetchInterfaceListMenu(option.props['projectId']);
       this.props.history.push(
-        '/project/' + option.props['projectId'] + '/interface/api/' + option.props['id']
+        '/yapi/project/' + option.props['projectId'] + '/interface/api/' + option.props['id']
       );
     }
   };
 
   handleSearch = value => {
     axios
-      .get('/api/project/search?q=' + value)
+      .get('/yapi/api/project/search?q=' + value)
       .then(res => {
         if (res.data && res.data.errcode === 0) {
           const dataSource = [];

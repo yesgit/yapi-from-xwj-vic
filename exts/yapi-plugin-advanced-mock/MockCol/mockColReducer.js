@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
 
 // Action Creators
 export async function fetchMockCol(interfaceId) {
-  let result = await axios.get('/api/plugin/advmock/case/list?interface_id=' + interfaceId);
+  let result = await axios.get('/yapi/api/plugin/advmock/case/list?interface_id=' + interfaceId);
   if(result.errcode !==0 ){
      message.error(result.errmsg);
      

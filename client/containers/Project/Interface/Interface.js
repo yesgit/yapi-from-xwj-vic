@@ -17,7 +17,7 @@ import InterfaceCaseContent from './InterfaceCol/InterfaceCaseContent.js';
 import { getProject } from '../../../reducer/modules/project';
 import { setColData } from '../../../reducer/modules/interfaceCol.js';
 const contentRouter = {
-  path: '/project/:id/interface/:action/:actionId',
+  path: '/yapi/project/:id/interface/:action/:actionId',
   exact: true
 };
 
@@ -37,7 +37,7 @@ const InterfaceRoute = props => {
     C = InterfaceCaseContent;
   } else {
     const params = props.match.params;
-    props.history.replace('/project/' + params.id + '/interface/api');
+    props.history.replace('/yapi/project/' + params.id + '/interface/api');
     return null;
   }
   return <C {...props} />;
@@ -82,7 +82,7 @@ class Interface extends Component {
     if (action === 'colOrCase') {
       action = this.props.isShowCol ? 'col' : 'case';
     }
-    this.props.history.push('/project/' + params.id + '/interface/' + action);
+    this.props.history.push('/yapi/project/' + params.id + '/interface/' + action);
   };
   async UNSAFE_componentWillMount() {
     this.props.setColData({
@@ -127,7 +127,7 @@ class Interface extends Component {
           >
             <div className="right-content">
               <Switch>
-                <Route exact path="/project/:id/interface/:action" component={InterfaceRoute} />
+                <Route exact path="/yapi/project/:id/interface/:action" component={InterfaceRoute} />
                 <Route {...contentRouter} component={InterfaceRoute} />
               </Switch>
             </div>

@@ -195,15 +195,15 @@ class MemberList extends Component {
         render: (text, record) => {
           return (
             <div className="m-user">
-              <Link to={`/user/profile/${record.uid}`}>
+              <Link to={`/yapi/user/profile/${record.uid}`}>
                 <img
                   src={
-                    location.protocol + '//' + location.host + '/api/user/avatar?uid=' + record.uid
+                    location.protocol + '//' + location.host + '/yapi/api/user/avatar?uid=' + record.uid
                   }
                   className="m-user-img"
                 />
               </Link>
-              <Link to={`/user/profile/${record.uid}`}>
+              <Link to={`/yapi/user/profile/${record.uid}`}>
                 <p className="m-user-name">{text}</p>
               </Link>
             </div>

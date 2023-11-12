@@ -103,7 +103,7 @@ class InterfaceList extends Component {
       desc: desc
     };
 
-    axios.post('/api/interface/up_cat', params).then(async res => {
+    axios.post('/yapi/api/interface/up_cat', params).then(async res => {
       if (res.data.errcode !== 0) {
         return message.error(res.data.errmsg);
       }
@@ -143,13 +143,13 @@ class InterfaceList extends Component {
 
   handleAddInterface = data => {
     data.project_id = this.props.curProject._id;
-    axios.post('/api/interface/add', data).then(res => {
+    axios.post('/yapi/api/interface/add', data).then(res => {
       if (res.data.errcode !== 0) {
         return message.error(`${res.data.errmsg}, 你可以在左侧的接口列表中对接口进行删改`);
       }
       message.success('接口添加成功');
       let interfaceId = res.data.data._id;
-      this.props.history.push('/project/' + data.project_id + '/interface/api/' + interfaceId);
+      this.props.history.push('/yapi/project/' + data.project_id + '/interface/api/' + interfaceId);
       this.props.fetchInterfaceListMenu(data.project_id);
     });
   };
@@ -159,7 +159,7 @@ class InterfaceList extends Component {
       id: id,
       catid
     };
-    let result = await axios.post('/api/interface/up', params);
+    let result = await axios.post('/yapi/api/interface/up', params);
     if (result.data.errcode === 0) {
       message.success('修改成功');
       this.handleRequest(this.props);
@@ -174,7 +174,7 @@ class InterfaceList extends Component {
       id: value.split('-')[0],
       status: value.split('-')[1]
     };
-    let result = await axios.post('/api/interface/up', params);
+    let result = await axios.post('/yapi/api/interface/up', params);
     if (result.data.errcode === 0) {
       message.success('修改成功');
       this.handleRequest(this.props);
@@ -210,7 +210,7 @@ class InterfaceList extends Component {
         render: (text, item) => {
           return (
             <Tooltip title= {text}>
-              <Link to={'/project/' + item.project_id + '/interface/api/' + item._id}>
+              <Link to={'/yapi/project/' + item.project_id + '/interface/api/' + item._id}>
                 <span className="path">{text}</span>
               </Link>
             </Tooltip>

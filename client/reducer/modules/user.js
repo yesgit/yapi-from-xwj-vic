@@ -134,21 +134,21 @@ export default (state = initialState, action) => {
 export function checkLoginState() {
   return {
     type: GET_LOGIN_STATE,
-    payload: axios.get('/api/user/status')
+    payload: axios.get('/yapi/api/user/status')
   };
 }
 
 export function loginActions(data) {
   return {
     type: LOGIN,
-    payload: axios.post('/api/user/login', data)
+    payload: axios.post('/yapi/api/user/login', data)
   };
 }
 
 export function loginLdapActions(data) {
   return {
     type: LOGIN,
-    payload: axios.post('/api/user/login_by_ldap', data)
+    payload: axios.post('/yapi/api/user/login_by_ldap', data)
   };
 }
 
@@ -161,14 +161,14 @@ export function regActions(data) {
   };
   return {
     type: REGISTER,
-    payload: axios.post('/api/user/reg', param)
+    payload: axios.post('/yapi/api/user/reg', param)
   };
 }
 
 export function logoutActions() {
   return {
     type: LOGIN_OUT,
-    payload: axios.get('/api/user/logout')
+    payload: axios.get('/yapi/api/user/logout')
   };
 }
 
@@ -202,6 +202,6 @@ export function changeStudyTip() {
 export function finishStudy() {
   return {
     type: FINISH_STUDY,
-    payload: axios.get('/api/user/up_study')
+    payload: axios.get('/yapi/api/user/up_study')
   };
 }

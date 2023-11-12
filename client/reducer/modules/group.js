@@ -80,7 +80,7 @@ export default (state = initialState, action) => {
 export function fetchGroupMsg(id) {
   return {
     type: FETCH_GROUP_MSG,
-    payload: axios.get('/api/group/get', {
+    payload: axios.get('/yapi/api/group/get', {
       params: { id }
     })
   };
@@ -90,7 +90,7 @@ export function fetchGroupMsg(id) {
 export function addMember(param) {
   return {
     type: ADD_GROUP_MEMBER,
-    payload: axios.post('/api/group/add_member', param)
+    payload: axios.post('/yapi/api/group/add_member', param)
   };
 }
 
@@ -98,7 +98,7 @@ export function addMember(param) {
 export function delMember(param) {
   return {
     type: DEL_GROUP_MEMBER,
-    payload: axios.post('/api/group/del_member', param)
+    payload: axios.post('/yapi/api/group/del_member', param)
   };
 }
 
@@ -106,7 +106,7 @@ export function delMember(param) {
 export function changeMemberRole(param) {
   return {
     type: CHANGE_GROUP_MEMBER,
-    payload: axios.post('/api/group/change_member_role', param)
+    payload: axios.post('/yapi/api/group/change_member_role', param)
   };
 }
 
@@ -114,7 +114,7 @@ export function changeMemberRole(param) {
 export function changeGroupMsg(param) {
   return {
     type: CHANGE_GROUP_MESSAGE,
-    payload: axios.post('/api/group/up', param)
+    payload: axios.post('/yapi/api/group/up', param)
   };
 }
 
@@ -130,7 +130,7 @@ export function updateGroupList(param) {
 export function deleteGroup(param) {
   return {
     type: DEL_GROUP,
-    payload: axios.post('/api/group/del', param)
+    payload: axios.post('/yapi/api/group/del', param)
   };
 }
 
@@ -138,7 +138,7 @@ export function deleteGroup(param) {
 export function fetchGroupMemberList(id) {
   return {
     type: FETCH_GROUP_MEMBER,
-    payload: axios.get('/api/group/get_member_list', {
+    payload: axios.get('/yapi/api/group/get_member_list', {
       params: { id }
     })
   };
@@ -148,14 +148,14 @@ export function fetchGroupMemberList(id) {
 export function fetchGroupList() {
   return {
     type: FETCH_GROUP_LIST,
-    payload: axios.get('/api/group/list')
+    payload: axios.get('/yapi/api/group/list')
   };
 }
 
 export function setCurrGroup(group) {
   return {
     type: SET_CURR_GROUP,
-    payload: axios.get('/api/group/get', {
+    payload: axios.get('/yapi/api/group/get', {
       params: { id: group._id }
     })
   };

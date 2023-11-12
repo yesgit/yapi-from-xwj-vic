@@ -128,7 +128,7 @@ class InterfaceMenu extends Component {
     if (!curkey || !selectedKeys) {
       return false;
     }
-    let basepath = '/project/' + match.params.id + '/interface/api';
+    let basepath = '/yapi/project/' + match.params.id + '/interface/api';
     if (curkey === 'root') {
       history.push(basepath);
     } else {
@@ -147,13 +147,13 @@ class InterfaceMenu extends Component {
 
   handleAddInterface = (data, cb) => {
     data.project_id = this.props.projectId;
-    axios.post('/api/interface/add', data).then(res => {
+    axios.post('/yapi/api/interface/add', data).then(res => {
       if (res.data.errcode !== 0) {
         return message.error(res.data.errmsg);
       }
       message.success('接口添加成功');
       let interfaceId = res.data.data._id;
-      this.props.history.push('/project/' + this.props.projectId + '/interface/api/' + interfaceId);
+      this.props.history.push('/yapi/project/' + this.props.projectId + '/interface/api/' + interfaceId);
       this.getList();
       this.setState({
         visible: false
@@ -166,7 +166,7 @@ class InterfaceMenu extends Component {
 
   handleAddInterfaceCat = data => {
     data.project_id = this.props.projectId;
-    axios.post('/api/interface/add_cat', data).then(res => {
+    axios.post('/yapi/api/interface/add_cat', data).then(res => {
       if (res.data.errcode !== 0) {
         return message.error(res.data.errmsg);
       }
@@ -188,7 +188,7 @@ class InterfaceMenu extends Component {
       desc: data.desc
     };
 
-    axios.post('/api/interface/up_cat', params).then(res => {
+    axios.post('/yapi/api/interface/up_cat', params).then(res => {
       if (res.data.errcode !== 0) {
         return message.error(res.data.errmsg);
       }
@@ -216,7 +216,7 @@ class InterfaceMenu extends Component {
         await that.props.fetchInterfaceCatList({ catid });
         ref.destroy();
         that.props.history.push(
-          '/project/' + that.props.match.params.id + '/interface/api/cat_' + catid
+          '/yapi/project/' + that.props.match.params.id + '/interface/api/cat_' + catid
         );
       },
       onCancel() {
@@ -237,7 +237,7 @@ class InterfaceMenu extends Component {
         await that.getList();
         // await that.props.getProject(that.props.projectId)
         await that.props.fetchInterfaceList({ project_id: that.props.projectId });
-        that.props.history.push('/project/' + that.props.match.params.id + '/interface/api');
+        that.props.history.push('/yapi/project/' + that.props.match.params.id + '/interface/api');
         ref.destroy();
       },
       onCancel() {}
@@ -255,14 +255,14 @@ class InterfaceMenu extends Component {
       draftData.path = draftData.path + '_' + Date.now();
     });
 
-    axios.post('/api/interface/add', newData).then(async res => {
+    axios.post('/yapi/api/interface/add', newData).then(async res => {
       if (res.data.errcode !== 0) {
         return message.error(res.data.errmsg);
       }
       message.success('接口添加成功');
       let interfaceId = res.data.data._id;
       await this.getList();
-      this.props.history.push('/project/' + this.props.projectId + '/interface/api/' + interfaceId);
+      this.props.history.push('/yapi/project/' + this.props.projectId + '/interface/api/' + interfaceId);
       this.setState({
         visible: false
       });
@@ -311,9 +311,9 @@ class InterfaceMenu extends Component {
         // 同一个分类下的接口交换顺序
         let colList = list[dropCatIndex].list;
         let changes = arrayChangeIndex(colList, dragIndex, dropIndex);
-        axios.post('/api/interface/up_index', changes).then();
+        axios.post('/yapi/api/interface/up_index', changes).then();
       } else {
-        await axios.post('/api/interface/up', { id, catid: dropCatId });
+        await axios.post('/yapi/api/interface/up', { id, catid: dropCatId });
       }
       const { projectId, router } = this.props;
       this.props.fetchInterfaceListMenu(projectId);
@@ -326,7 +326,7 @@ class InterfaceMenu extends Component {
     } else {
       // 分类之间拖动
       let changes = arrayChangeIndex(list, dragIndex - 1, dropIndex - 1);
-      axios.post('/api/interface/up_cat_index', changes).then();
+      axios.post('/yapi/api/interface/up_cat_index', changes).then();
       this.props.fetchInterfaceListMenu(this.props.projectId);
     }
   };
@@ -472,7 +472,7 @@ class InterfaceMenu extends Component {
                 <Link
                   className="interface-item"
                   onClick={e => e.stopPropagation()}
-                  to={'/project/' + matchParams.id + '/interface/api/' + item._id}
+                  to={'/yapi/project/' + matchParams.id + '/interface/api/' + item._id}
                 >
                   {item.title}
                 </Link>
@@ -548,7 +548,7 @@ class InterfaceMenu extends Component {
                       e.stopPropagation();
                       this.changeExpands();
                     }}
-                    to={'/project/' + matchParams.id + '/interface/api'}
+                    to={'/yapi/project/' + matchParams.id + '/interface/api'}
                   >
                     <Icon type="folder" style={{ marginRight: 5 }} />
                     全部接口
@@ -571,7 +571,7 @@ class InterfaceMenu extends Component {
                             e.stopPropagation();
                             this.changeExpands();
                           }}
-                          to={'/project/' + matchParams.id + '/interface/api/cat_' + item._id}
+                          to={'/yapi/project/' + matchParams.id + '/interface/api/cat_' + item._id}
                         >
                           <Icon type="folder-open" style={{ marginRight: 5 }} />
                           {item.name}

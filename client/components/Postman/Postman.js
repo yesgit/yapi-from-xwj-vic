@@ -209,7 +209,7 @@ export default class Run extends Component {
         console.log('e', e);
         return;
       }
-      let result = await axios.post('/api/interface/schema2json', {
+      let result = await axios.post('/yapi/api/interface/schema2json', {
         schema: schema,
         required: true
       });

@@ -47,15 +47,15 @@ class News extends Component {
           data={[
             {
               name: '动态',
-              path: '/news'
+              path: '/yapi/news'
             },
             {
               name: '测试',
-              path: '/follow'
+              path: '/yapi/follow'
             },
             {
               name: '设置',
-              path: '/follow'
+              path: '/yapi/follow'
             }
           ]}
         />

@@ -92,7 +92,7 @@ export default class GroupList extends Component {
         }
       }
     } else if (!groupId && this.props.groupList.length) {
-      this.props.history.push(`/group/${this.props.groupList[0]._id}`);
+      this.props.history.push(`/yapi/group/${this.props.groupList[0]._id}`);
     }
     if (!currGroup) {
       currGroup = this.props.groupList[0] || { group_name: '', group_desc: '' };
@@ -120,7 +120,7 @@ export default class GroupList extends Component {
   @autobind
   async addGroup() {
     const { newGroupName: group_name, newGroupDesc: group_desc, owner_uids } = this.state;
-    const res = await axios.post('/api/group/add', { group_name, group_desc, owner_uids });
+    const res = await axios.post('/yapi/api/group/add', { group_name, group_desc, owner_uids });
     if (!res.data.errcode) {
       this.setState({
         newGroupName: '',
@@ -140,7 +140,7 @@ export default class GroupList extends Component {
   async editGroup() {
     const { currGroupName: group_name, currGroupDesc: group_desc } = this.state;
     const id = this.props.currGroup._id;
-    const res = await axios.post('/api/group/up', { group_name, group_desc, id });
+    const res = await axios.post('/yapi/api/group/up', { group_name, group_desc, id });
     if (res.data.errcode) {
       message.error(res.data.errmsg);
     } else {

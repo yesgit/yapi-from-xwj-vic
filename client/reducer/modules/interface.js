@@ -94,7 +94,7 @@ export function updateInterfaceData(updata) {
 }
 
 export async function deleteInterfaceData(id) {
-  let result = await axios.post('/api/interface/del', {id: id});
+  let result = await axios.post('/yapi/api/interface/del', {id: id});
   return {
     type: DELETE_INTERFACE_DATA,
     payload: result
@@ -102,7 +102,7 @@ export async function deleteInterfaceData(id) {
 }
 
 export async function saveImportData(data) {
-  let result = await axios.post('/api/interface/save', data);
+  let result = await axios.post('/yapi/api/interface/save', data);
   return {
     type: SAVE_IMPORT_DATA,
     payload: result
@@ -110,7 +110,7 @@ export async function saveImportData(data) {
 }
 
 export async function deleteInterfaceCatData(id) {
-  let result = await axios.post('/api/interface/del_cat', {catid: id});
+  let result = await axios.post('/yapi/api/interface/del_cat', {catid: id});
   return {
     type: DELETE_INTERFACE_CAT_DATA,
     payload: result
@@ -119,7 +119,7 @@ export async function deleteInterfaceCatData(id) {
 
 // Action Creators
 export async function fetchInterfaceData(interfaceId) {
-  let result = await axios.get('/api/interface/get?id=' + interfaceId);
+  let result = await axios.get('/yapi/api/interface/get?id=' + interfaceId);
   return {
     type: FETCH_INTERFACE_DATA,
     payload: result
@@ -127,7 +127,7 @@ export async function fetchInterfaceData(interfaceId) {
 }
 
 export async function fetchInterfaceListMenu(projectId) {
-  let result = await axios.get('/api/interface/list_menu?project_id=' + projectId);
+  let result = await axios.get('/yapi/api/interface/list_menu?project_id=' + projectId);
   return {
     type: FETCH_INTERFACE_LIST_MENU,
     payload: result
@@ -135,7 +135,7 @@ export async function fetchInterfaceListMenu(projectId) {
 }
 
 export async function fetchInterfaceList(params) {
-  let result = await axios.get('/api/interface/list', {
+  let result = await axios.get('/yapi/api/interface/list', {
     params,
     paramsSerializer: params => {
       return qs.stringify(params, {indices: false})
@@ -148,7 +148,7 @@ export async function fetchInterfaceList(params) {
 }
 
 export async function fetchInterfaceCatList(params) {
-  let result = axios.get('/api/interface/list_cat', {
+  let result = axios.get('/yapi/api/interface/list_cat', {
     params,
     paramsSerializer: params => {
       return qs.stringify(params, {indices: false})

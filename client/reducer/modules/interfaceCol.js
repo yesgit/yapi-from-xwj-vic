@@ -78,28 +78,28 @@ export default (state = initialState, action) => {
 export function fetchInterfaceColList(projectId) {
   return {
     type: FETCH_INTERFACE_COL_LIST,
-    payload: axios.get('/api/col/list?project_id=' + projectId)
+    payload: axios.get('/yapi/api/col/list?project_id=' + projectId)
   };
 }
 
 export function fetchCaseData(caseId) {
   return {
     type: FETCH_CASE_DATA,
-    payload: axios.get('/api/col/case?caseid=' + caseId)
+    payload: axios.get('/yapi/api/col/case?caseid=' + caseId)
   };
 }
 
 export function fetchCaseList(colId) {
   return {
     type: FETCH_CASE_LIST,
-    payload: axios.get('/api/col/case_list/?col_id=' + colId)
+    payload: axios.get('/yapi/api/col/case_list/?col_id=' + colId)
   };
 }
 
 export function fetchCaseEnvList(col_id) {
   return {
     type: FETCH_CASE_ENV_LIST,
-    payload: axios.get('/api/col/case_env_list', {
+    payload: axios.get('/yapi/api/col/case_env_list', {
       params: { col_id }
     })
   };
@@ -108,7 +108,7 @@ export function fetchCaseEnvList(col_id) {
 export function fetchVariableParamsList(colId) {
   return {
     type: FETCH_VARIABLE_PARAMS_LIST,
-    payload: axios.get('/api/col/case_list_by_var_params?col_id=' + colId)
+    payload: axios.get('/yapi/api/col/case_list_by_var_params?col_id=' + colId)
   };
 }
 

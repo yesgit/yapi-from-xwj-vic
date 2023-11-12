@@ -146,7 +146,7 @@ export default class InterfaceCaseContent extends Component {
       test_res_header
     };
 
-    const res = await axios.post('/api/col/up_case', params);
+    const res = await axios.post('/yapi/api/col/up_case', params);
     if (this.props.currCase.casename !== casename) {
       this.props.fetchInterfaceColList(this.props.match.params.id);
     }
@@ -209,7 +209,7 @@ export default class InterfaceCaseContent extends Component {
           <span className="inter-link" style={{ margin: '0px 8px 0px 6px', fontSize: 12 }}>
             <Link
               className="text"
-              to={`/project/${currCase.project_id}/interface/api/${currCase.interface_id}`}
+              to={`/yapi/project/${currCase.project_id}/interface/api/${currCase.interface_id}`}
             >
               对应接口
             </Link>

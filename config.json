@@ -23,7 +23,7 @@
       {
          "name": "notifier",
          "options": {
-            "host": "http://localhost:3000"
+            "host": "http://localhost:3000/yapi"
          }
       },
       {
@@ -35,7 +35,7 @@
       {
          "name": "pl-auto-test",
          "options": {
-            "host": "http://localhost:3000"
+            "host": "http://localhost:3000/yapi"
          }
       },
       {
@@ -50,7 +50,7 @@
             "monitor1": {
                "yapiAdress": "127.0.0.1",
                "yapiPort": "3000",
-               "url": "http://127.0.0.1:3000/api/v1",
+               "url": "http://127.0.0.1:3000/yapi/api/v1",
                "method": "post",
                "status": true,
                "events": [

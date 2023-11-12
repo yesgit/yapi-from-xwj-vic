@@ -41,7 +41,7 @@ export default class Group extends Component {
   }
 
   async componentDidMount(){
-    let r = await axios.get('/api/group/get_mygroup')
+    let r = await axios.get('/yapi/api/group/get_mygroup')
     try{
       let group = r.data.data;
       this.setState({
@@ -114,8 +114,8 @@ export default class Group extends Component {
     return (
       <div className="projectGround">
         <Switch>
-          <Redirect exact from="/group" to={"/group/" + this.state.groupId} />
-          <Route path="/group/:groupId" render={() => GroupContent} />
+          <Redirect exact from="/yapi/group" to={"/yapi/group/" + this.state.groupId} />
+          <Route path="/yapi/group/:groupId" render={() => GroupContent} />
         </Switch>
       </div>
     );

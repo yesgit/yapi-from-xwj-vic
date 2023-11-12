@@ -3,7 +3,7 @@ var AssetsPlugin = require('assets-webpack-plugin');
 var CompressionPlugin = require('compression-webpack-plugin');
 var commonLib = require('./common/plugin.js');
 var assetsPluginInstance = new AssetsPlugin({
-  filename: 'static/prd/assets.js',
+  filename: 'static/yapi/prd/assets.js',
   processOutput: function(assets) {
     return 'window.WEBPACK_ASSETS = ' + JSON.stringify(assets);
   }
@@ -142,7 +142,7 @@ module.exports = {
         // baseConfig.resolve.alias.react = 'anujs';
         // baseConfig.resolve.alias['react-dom'] = 'anujs';
 
-        baseConfig.output.prd.path = 'static/prd';
+        baseConfig.output.prd.path = 'static/yapi/prd';
         baseConfig.output.prd.publicPath = '';
         baseConfig.output.prd.filename = '[name]@[chunkhash][ext]';
 

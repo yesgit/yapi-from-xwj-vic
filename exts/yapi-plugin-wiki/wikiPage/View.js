@@ -14,7 +14,7 @@ const WikiView = props => {
         {username && (
           <div className="wiki-user">
             由{' '}
-            <Link className="user-name" to={`/user/profile/${uid || 11}`}>
+            <Link className="user-name" to={`/yapi/user/profile/${uid || 11}`}>
               {username}
             </Link>{' '}
             修改于 {editorTime}

@@ -149,7 +149,7 @@ class statisticsPage extends Component {
 
   // 获取统计数据
   async getStatisData() {
-    let result = await axios.get('/api/plugin/statismock/count');
+    let result = await axios.get('/yapi/api/plugin/statismock/count');
     if (result.data.errcode === 0) {
       let statisData = result.data.data;
       this.setState({
@@ -161,7 +161,7 @@ class statisticsPage extends Component {
   // 获取系统信息
 
   async getSystemStatusData() {
-    let result = await axios.get('/api/plugin/statismock/get_system_status');
+    let result = await axios.get('/yapi/api/plugin/statismock/get_system_status');
     if (result.data.errcode === 0) {
       let statusData = result.data.data;
       this.setState({
@@ -173,7 +173,7 @@ class statisticsPage extends Component {
   // 获取分组详细信息
 
   async getGroupData() {
-    let result = await axios.get('/api/plugin/statismock/group_data_statis');
+    let result = await axios.get('/yapi/api/plugin/statismock/group_data_statis');
     if (result.data.errcode === 0) {
       let statusData = result.data.data;
       statusData.map(item => {

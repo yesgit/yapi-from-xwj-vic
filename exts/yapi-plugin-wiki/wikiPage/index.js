@@ -80,7 +80,7 @@ class WikiPage extends Component {
       wsProtocol +
         '://' +
         domain +
-        '/api/ws_plugin/wiki_desc/solve_conflict?id=' +
+        '/yapi/api/ws_plugin/wiki_desc/solve_conflict?id=' +
         this.props.match.params.id
     );
     s.onopen = () => {
@@ -157,7 +157,7 @@ class WikiPage extends Component {
 
   //  获取数据
   handleData = async params => {
-    let result = await axios.get('/api/plugin/wiki_desc/get', { params });
+    let result = await axios.get('/yapi/api/plugin/wiki_desc/get', { params });
     if (result.data.errcode === 0) {
       const data = result.data.data;
       if (data) {
@@ -183,7 +183,7 @@ class WikiPage extends Component {
       markdown,
       email_notice: this.state.notice
     };
-    let result = await axios.post('/api/plugin/wiki_desc/up', option);
+    let result = await axios.post('/yapi/api/plugin/wiki_desc/up', option);
     if (result.data.errcode === 0) {
       await this.handleData({ project_id: currProjectId });
       this.setState({ isEditor: false });
@@ -220,7 +220,7 @@ class WikiPage extends Component {
           <div className="wiki-content">
             {isConflict && (
               <div className="wiki-conflict">
-                <Link to={`/user/profile/${editUid || uid}`}>
+                <Link to={`/yapi/user/profile/${editUid || uid}`}>
                   <b>{editName || username}</b>
                 </Link>
                 <span>正在编辑该wiki，请稍后再试...</span>
