@@ -26,5 +26,5 @@ shell.exec ('git push origin ' + version);
 
 console.log('git push success', version)
 
-console.log('正在执行npm发布')
-shell.exec('npm publish')
+//console.log('正在执行npm发布')
+//shell.exec('npm publish')
