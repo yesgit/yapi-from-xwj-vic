@@ -1,23 +1,49 @@
-FROM jayfong/yapi:latest
+######## 构建 ########
+FROM --platform=${BUILDPLATFORM:-amd64} node:12.16.3-alpine3.11 as builder
 
-COPY vendors /yapi/vendors
+# 安装构建工具
+RUN apk add --update --no-cache ca-certificates curl wget cmake build-base git bash python make gcc g++ zlib-dev autoconf automake file nasm \
+  && update-ca-certificates
 
-ENV YAPI_ADMIN_ACCOUNT=admin@admin.com
-ENV YAPI_ADMIN_PASSWORD=admin
-ENV YAPI_CLOSE_REGISTER=true
-ENV YAPI_DB_SERVERNAME=127.0.0.1
-ENV YAPI_DB_PORT=27017
-ENV YAPI_DB_DATABASE=yapi
-ENV YAPI_MAIL_ENABLE=false
-ENV YAPI_LDAP_LOGIN_ENABLE=false
-ENV YAPI_PLUGINS=[]
+# 编译脚本
+WORKDIR /yapi/scripts
+COPY ./docker/* .
+RUN yarn && yarn build
 
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/main' >> /etc/apk/repositories && \
-  echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories && \
-  apk add --update --no-cache mongodb && \
-  mkdir -p /data/db
+WORKDIR /yapi/vendors
 
-EXPOSE $PORT
+# 拉取 YApi 源码
+COPY . .
 
-CMD mongod --fork --dbpath=/data/db/  --logpath=mongodb.log && node /yapi/vendors/start.js
+# 拷贝启动脚本
+RUN cp /yapi/scripts/start.js ./start.js
 
+# 执行一些准备工作
+RUN node /yapi/scripts/prepare.js $(pwd)
+
+# 安装依赖
+RUN npm install && npm install -g ykit
+
+# 清理文件
+#RUN node /yapi/scripts/clean.js $(pwd)
+
+# 构建应用
+RUN npm run build-client
+
+# 再次清理以删除构建缓存文件
+RUN node /yapi/scripts/clean.js $(pwd)
+
+# 删除脚本
+RUN rm -rf /yapi/scripts
+
+
+######## 镜像 ########
+FROM node:12.16.3-alpine3.11
+
+WORKDIR /yapi
+
+COPY --from=builder /yapi .
+
+EXPOSE 3000
+
+CMD ["node", "/yapi/vendors/start.js"]
