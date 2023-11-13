@@ -49,7 +49,7 @@ class InterfaceEdit extends Component {
         '//' +
         location.hostname +
         (location.port !== '' ? ':' + location.port : '') +
-        `/mock/${currProject._id}${currProject.basepath}${curdata.path}`,
+        `/yapi/mock/${currProject._id}${currProject.basepath}${curdata.path}`,
       curdata: {},
       status: 0,
       visible: false

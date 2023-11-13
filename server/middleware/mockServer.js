@@ -148,7 +148,7 @@ module.exports = async (ctx, next) => {
   let path = ctx.path;
   let header = ctx.request.header;
 
-  if (path.indexOf('/mock/') !== 0) {
+  if (path.indexOf('/yapi/mock/') !== 0) {
     if (next) await next();
     return true;
   }

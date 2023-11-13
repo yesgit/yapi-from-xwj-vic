@@ -231,7 +231,7 @@ class ProjectMessage extends Component {
       '//' +
       location.hostname +
       (location.port !== '' ? ':' + location.port : '') +
-      `/mock/${projectMsg._id}${projectMsg.basepath}+$接口请求路径`;
+      `/yapi/mock/${projectMsg._id}${projectMsg.basepath}+$接口请求路径`;
     let initFormValues = {};
     const {
       name,
