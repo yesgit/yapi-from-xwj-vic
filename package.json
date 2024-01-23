@@ -16,7 +16,7 @@
     "build-client": "NODE_ENV=production ykit pack -m",
     "npm-publish": "node ./npm-publish.js",
     "docs": "ydoc build",
-    "docker-build": "docker build --platform=linux/amd64 -t hedw/yapi-free:$(node -p \"require('./package.json').version\") .",
+    "docker-build": "docker buildx build --platform=linux/amd64,linux/arm64 --push -t hedw/yapi-free:$(node -p \"require('./package.json').version\") .",
     "docker-down": "docker-compose down",
     "docker-up": "docker-compose down && docker-compose up"
   },
