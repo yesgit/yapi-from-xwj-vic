@@ -12,6 +12,7 @@ const websockify = require('koa-websocket');
 const websocket = require('./websocket.js');
 const storageCreator = require('./utils/storage')
 require('./utils/notice')
+const fs = require('fs');
 
 const Koa = require('koa');
 const koaStatic = require('koa-static');
@@ -21,6 +22,7 @@ const router = require('./router.js');
 
 global.storageCreator = storageCreator;
 let indexFile = process.argv[2] === 'dev' ? 'dev.html' : 'index.html';
+const mainPageContent = fs.readFileSync(yapi.path.join(yapi.WEBROOT, indexFile), 'utf8');
 
 const app = websockify(new Koa());
 app.proxy = true;
@@ -56,6 +58,11 @@ app.use(async (ctx, next) => {
 
 app.use(koaStatic(yapi.path.join(yapi.WEBROOT, 'static'), { index: indexFile, gzip: true }));
 
+// 处理其他路由，返回静态主页面的内容，以支持浏览器刷新页面时停留在当前页面
+router.all('*', async (ctx) => {
+  ctx.type = 'html';
+  ctx.body = mainPageContent;
+});
 
 const server = app.listen(yapi.WEBCONFIG.port);
 
